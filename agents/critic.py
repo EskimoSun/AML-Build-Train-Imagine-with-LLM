@@ -31,8 +31,11 @@ Output format (JSON only):
 
 """
 
-    def run(self, code, test_output):
+    def run(self, task, code, test_output):
         prompt = f"""
+CODING TASK:
+{task}
+
 CODE:
 {code}
 

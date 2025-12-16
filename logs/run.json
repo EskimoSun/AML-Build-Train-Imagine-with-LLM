@@ -1,7 +1,154 @@
 [
   {
     "iteration": 0,
-    "code": "def make_palindrome(s):\n    if s == s[::-1]:\n        return s\n    for i in range(len(s)):\n        if s[i:] == s[i:][::-1]:\n            return s + s[:i][::-1]\n    return s + s[::-1]",
+    "code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string. \"\"\"\n    for i in range(len(string), -1, -1):\n        if is_palindrome(string[:i]):\n            return string + string[i:][::-1]\n    return string",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 14, in run_test\\n    namespace[\\\"check\\\"](candidate)\\n  File \\\"<string>\\\", line 12, in check\\nAssertionError\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 14, in run_test\n    namespace[\"check\"](candidate)\n  File \"<string>\", line 12, in check\nAssertionError\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 1,
+    "code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string. \"\"\"\n    if string == \"\":\n        return \"\"\n    for i in range(len(string), -1, -1):\n        if is_palindrome(string[:i]):\n            return string + string[i:][::-1]\n    return string",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 14, in run_test\\n    namespace[\\\"check\\\"](candidate)\\n  File \\\"<string>\\\", line 12, in check\\nAssertionError\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 14, in run_test\n    namespace[\"check\"](candidate)\n  File \"<string>\", line 12, in check\nAssertionError\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 2,
+    "code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string. \"\"\"\n    if string == \"\":\n        return \"\"\n    for i in range(len(string), -1, -1):\n        if is_palindrome(string[:i]):\n            return string + string[i:][::-1]\n    return string",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 14, in run_test\\n    namespace[\\\"check\\\"](candidate)\\n  File \\\"<string>\\\", line 12, in check\\nAssertionError\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 14, in run_test\n    namespace[\"check\"](candidate)\n  File \"<string>\", line 12, in check\nAssertionError\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 3,
+    "code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string. \"\"\"\n    if string == \"\":\n        return \"\"\n    if is_palindrome(string):\n        return string\n    for i in range(len(string), -1, -1):\n        if is_palindrome(string[:i]):\n            return string + string[i:][::-1]\n    return string",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 14, in run_test\\n    namespace[\\\"check\\\"](candidate)\\n  File \\\"<string>\\\", line 12, in check\\nAssertionError\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 14, in run_test\n    namespace[\"check\"](candidate)\n  File \"<string>\", line 12, in check\nAssertionError\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 4,
+    "code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string. \"\"\"\n    if string == \"\":\n        return \"\"\n    if is_palindrome(string):\n        return string\n    for i in range(len(string), -1, -1):\n        if is_palindrome(string[:i]):\n            return string + string[:i][::-1]\n    return string",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 14, in run_test\\n    namespace[\\\"check\\\"](candidate)\\n  File \\\"<string>\\\", line 12, in check\\nAssertionError\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 14, in run_test\n    namespace[\"check\"](candidate)\n  File \"<string>\", line 12, in check\nAssertionError\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 5,
+    "code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string. \"\"\"\n    if string == \"\":\n        return \"\"\n    if is_palindrome(string):\n        return string\n    for i in range(len(string), -1, -1):\n        if is_palindrome(string[:i]):\n            return string + string[i:][::-1]\n    return string",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 14, in run_test\\n    namespace[\\\"check\\\"](candidate)\\n  File \\\"<string>\\\", line 12, in check\\nAssertionError\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 14, in run_test\n    namespace[\"check\"](candidate)\n  File \"<string>\", line 12, in check\nAssertionError\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 6,
+    "code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string. \"\"\"\n    if string == \"\":\n        return \"\"\n    if is_palindrome(string):\n        return string\n    for i in range(len(string), -1, -1):\n        if is_palindrome(string[i:]):\n            return string + string[:i][::-1]\n    return string",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 14, in run_test\\n    namespace[\\\"check\\\"](candidate)\\n  File \\\"<string>\\\", line 12, in check\\nAssertionError\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 14, in run_test\n    namespace[\"check\"](candidate)\n  File \"<string>\", line 12, in check\nAssertionError\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 7,
+    "code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string. \"\"\"\n    if string == \"\":\n        return \"\"\n    if is_palindrome(string):\n        return string\n    for i in range(len(string)):\n        if is_palindrome(string[i:]):\n            return string + string[:i][::-1]\n    return string",
     "test": {
       "passed": true,
       "raw": {

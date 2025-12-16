@@ -10,7 +10,6 @@ Run the following to test cases:
 ```sh
     source venv/bin/activate
     docker build -t code-sandbox -f sandbox/Dockerfile .
-    python main.py
 ```
 
 ```sh

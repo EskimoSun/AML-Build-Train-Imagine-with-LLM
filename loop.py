@@ -22,6 +22,7 @@ def solve_problem(task, tests, entry_point, initial_code=""):
             break
 
         code = coder.run(
+            task=task,
             current_code=code,
             instruction=critic_feedback or plan["step_goal"]
         )["code"]
@@ -37,9 +38,7 @@ def solve_problem(task, tests, entry_point, initial_code=""):
         if test_out["passed"]:
             return True, code, trace
 
-        if i > 0 and trace[-1]["test"] == trace[-2]["test"]:
-            break
 
-        critic_feedback = critic.run(code, test_out)["fix_instruction"]
+        critic_feedback = critic.run(task, code, test_out)["fix_instruction"]
 
     return False, code, trace

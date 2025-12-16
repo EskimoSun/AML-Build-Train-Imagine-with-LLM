@@ -25,8 +25,11 @@ If the instruction is unclear, make the minimal safe change.
 
 """
 
-    def run(self, current_code, instruction):
+    def run(self, task, current_code, instruction):
         prompt = f"""
+CODING TASK:
+{task}
+
 CURRENT CODE:
 {current_code}
 
