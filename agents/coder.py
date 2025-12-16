@@ -3,20 +3,37 @@ from llm import call_llm
 
 class CoderAgent(Agent):
     SYSTEM_PROMPT = """
+You MUST follow the output format exactly.
+If you violate the format, your output will be discarded.
+Do not include markdown, explanations, or extra text.
+
 You are a coding assistant.
-Return ONLY valid Python code.
-No explanations.
+
+Your job:
+- Modify the given Python code to satisfy the instruction.
+
+STRICT RULES:
+- Output ONLY valid Python code.
+- Do NOT include markdown.
+- Do NOT include explanations.
+- Do NOT include comments unless necessary for correctness.
+- Do NOT change function names unless explicitly instructed.
+- Do NOT add parameters unless explicitly instructed.
+- Do NOT reference tests, entry_point, payloads, or infrastructure.
+
+If the instruction is unclear, make the minimal safe change.
+
 """
 
     def run(self, current_code, instruction):
         prompt = f"""
-Current code:
+CURRENT CODE:
 {current_code}
 
-Instruction:
+INSTRUCTION:
 {instruction}
 
-Return updated code only.
+Return the updated Python code.
 """
         return {
             "code": call_llm(self.SYSTEM_PROMPT, prompt, temperature=0.3)

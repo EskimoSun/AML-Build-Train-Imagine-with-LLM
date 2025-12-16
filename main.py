@@ -31,10 +31,11 @@ def main():
             json.dump(trace, f, indent=2)
 
     else:  # baseline
-        result = run_baseline(task, tests, entry_point)
-        # result contains runner output (stdout/stderr/returncode)
-        print("BASELINE RESULT:\n", json.dumps(result, indent=2))
-        trace = {"baseline_result": result}
+        success, final_code, trace = run_baseline(task, tests, entry_point)
+
+        print("SUCCESS:", success)
+        print("FINAL CODE:\n", final_code)
+
         with open("logs/run.json", "w") as f:
             json.dump(trace, f, indent=2)
 
