@@ -1,0 +1,85 @@
+[
+  {
+    "iteration": 0,
+    "code": "```python\ndef are_numbers_closer(numbers, threshold):\n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) < threshold:\n                return True\n    return False\n```",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 7, in run_test\\n    exec(code, namespace)\\n  File \\\"<string>\\\", line 1\\n    ```python\\n    ^\\nSyntaxError: invalid syntax\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 7, in run_test\n    exec(code, namespace)\n  File \"<string>\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 1,
+    "code": "def are_numbers_closer(numbers, threshold):\n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) < threshold:\n                return True\n    return False",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 13, in run_test\\n    candidate = namespace[entry_point]\\nKeyError: 'has_close_elements'\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 13, in run_test\n    candidate = namespace[entry_point]\nKeyError: 'has_close_elements'\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 2,
+    "code": "```python\ndef has_close_elements(numbers, threshold):\n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) < threshold:\n                return True\n    return False\n```",
+    "test": {
+      "passed": false,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": false, \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/app/humaneval/test_harness.py\\\", line 7, in run_test\\n    exec(code, namespace)\\n  File \\\"<string>\\\", line 1\\n    ```python\\n    ^\\nSyntaxError: invalid syntax\\n\"}], \"passed\": false}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": false,
+            "traceback": "Traceback (most recent call last):\n  File \"/app/humaneval/test_harness.py\", line 7, in run_test\n    exec(code, namespace)\n  File \"<string>\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+          }
+        ],
+        "passed": false
+      }
+    }
+  },
+  {
+    "iteration": 3,
+    "code": "def has_close_elements(numbers, threshold):\n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) < threshold:\n                return True\n    return False",
+    "test": {
+      "passed": true,
+      "raw": {
+        "stdout": "{\"results\": [{\"passed\": true}], \"passed\": true}\n",
+        "stderr": "",
+        "returncode": 0
+      },
+      "parsed": {
+        "results": [
+          {
+            "passed": true
+          }
+        ],
+        "passed": true
+      }
+    }
+  }
+]

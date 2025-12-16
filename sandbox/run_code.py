@@ -12,4 +12,7 @@ results = []
 for test in tests:
     results.append(run_test(code, test, entry_point))
 
-print(json.dumps(results))
+print(json.dumps({
+    "results": results,
+    "passed": all(r["passed"] for r in results)
+}))
