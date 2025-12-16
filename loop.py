@@ -2,6 +2,7 @@ from agents.manager import ManagerAgent
 from agents.coder import CoderAgent
 from agents.tester import TesterAgent
 from agents.critic import CriticAgent
+from diff_utils import apply_diff
 
 MAX_ITERS = 10
 
@@ -21,11 +22,26 @@ def solve_problem(task, tests, entry_point, initial_code=""):
         if plan.get("done"):
             break
 
-        code = coder.run(
+        for attempt in range(3):
+            diff = coder.run(
             task=task,
             current_code=code,
             instruction=critic_feedback or plan["step_goal"]
-        )["code"]
+            )["code"]
+
+            try:
+                code = apply_diff(code, diff)
+                break  # Exit the retry loop if successful
+            except Exception:
+                continue
+        else:
+            # If all attempts fail, apply the last alternative
+            code = coder.run(
+            task=task,
+            current_code=code,
+            instruction=critic_feedback or plan["step_goal"],
+            alternate=True
+            )["code"]
 
         test_out = tester.run(code, tests, entry_point)
 

@@ -10,6 +10,35 @@ Do not include markdown, explanations, or extra text.
 You are a coding assistant.
 
 Your job:
+- Propose ONE minimal edit to the existing code.
+
+STRICT RULES:
+- DO NOT output full code.
+- DO NOT include explanations or markdown.
+- DO NOT modify unrelated code.
+- DO NOT change function names or parameters unless explicitly required.
+- DO NOT reference tests or infrastructure.
+
+You MUST return valid JSON ONLY in this format:
+
+{
+  "edit_type": "replace",
+  "target": "<exact substring from the current code>",
+  "replacement": "<new substring>"
+}
+
+The target string MUST appear exactly once in the current code.
+
+"""
+
+    SYSTEM_PROMPT_ALTERNATE = """
+You MUST follow the output format exactly.
+If you violate the format, your output will be discarded.
+Do not include markdown, explanations, or extra text.
+
+You are a coding assistant.
+
+Your job:
 - Modify the given Python code to satisfy the instruction.
 
 STRICT RULES:
@@ -25,8 +54,20 @@ If the instruction is unclear, make the minimal safe change.
 
 """
 
-    def run(self, task, current_code, instruction):
+    def run(self, task, current_code, instruction, alternate=False):
         prompt = f"""
+CODING TASK:
+{task}
+
+CURRENT CODE:
+{current_code}
+
+INSTRUCTION:
+{instruction}
+
+Propose ONE minimal edit.
+"""
+        prompt_alternate = f"""
 CODING TASK:
 {task}
 
@@ -38,6 +79,11 @@ INSTRUCTION:
 
 Return the updated Python code.
 """
+        if alternate:
+            return {
+                "code": call_llm(self.SYSTEM_PROMPT_ALTERNATE, prompt_alternate, temperature=0.3)
+            }
+
         return {
             "code": call_llm(self.SYSTEM_PROMPT, prompt, temperature=0.3)
         }
