@@ -17,6 +17,7 @@ A small framework for running LLM-driven code generation and evaluation used in 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+docker build -t code-sandbox -f sandbox/Dockerfile .
 ```
 
 2) Install Python dependencies
@@ -48,18 +49,7 @@ python main.py --mode baseline --index 10
 Outputs and logs
 - Run traces are written to `logs/run.json` by default.
 
-Docker sandbox (optional)
-- To build the sandbox image (used by the tester/runner to execute candidate code):
-
-```bash
-docker build -t code-sandbox -f sandbox/Dockerfile .
-```
-
 Troubleshooting
-- The project currently imports a `human_eval.data` module from `main.py`. The repository includes a `humaneval/` folder (no underscore). If you see an import error like `ModuleNotFoundError: No module named 'human_eval'`, edit `main.py` and change the import to:
-
-```python
-from humaneval.test_harness import run_test  # or update `human_eval.data` -> `humaneval` as appropriate
-```
+- Make sure Docker is running
 
 - If OpenAI calls fail, ensure `OPENAI_API_KEY` is set and has appropriate access.
